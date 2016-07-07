@@ -13,8 +13,12 @@
 ## git查看、添加、提交、删除、找回，重置修改文件
 	git status # 查看文件的提交状态
 	git add # 添加提交的文件
-    git add . # 提交所有文件
+	git add . # 提交所有文件
 	git commit -m ‘’ # 提交修改的内容描述
 	git pull origin （分支名称） # 拉取远程此分支的更新内容
 	git push origin （分支名称）# 将此分支在本地的修改推到远程分支
 
+## git 本地分支的管理
+	git branch # 查看本地分支
+	git branch -a # 查看远程分支
+	git branch （新分支的名字）# 创建新分支 
