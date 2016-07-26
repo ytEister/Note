@@ -24,4 +24,62 @@
     2.& 提供一种方式执行一个表达式在父scope的上下文中。如果没有指定attr名称，则属性名
 	  称为相同的本地名称。
 	3.= 通过directive的attr属性值在局部scope的属性和父scope属性名之间建立双向绑定
-	
+@ 局部 scope 属性
+#### js代码
+	 app.controller("myController", function ($scope) {
+	        $scope.name = "hello world";
+	    }).directive("isolatedDirective", function () {
+	        return {
+	            scope: {
+	                name: "@"
+	            },
+			template: 'Say：{{name}} <br>改变隔离scope的name：<input type="buttom" value="" ng-model="name" class="ng-pristine ng-valid">'
+		}
+	})
+#### html 代码
+	<div ng-controller="myController">
+	   <div class="result">
+	       <div>父scope：
+	           <div>Say：{{name}}<br>改变父scope的name：<input type="text" value="" ng-model="name"/></div>
+	       </div>
+	       <div>隔离scope：
+	           <div isolated-directive name="{{name}}"></div>
+	       </div>
+	       <div>隔离scope（不使用{{name}}）：
+	             <div isolated-directive name="name"></div>
+	       </div>
+	  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
