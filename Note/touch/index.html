@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="initial-scale=1,width=device-width"> -->
+    <title></title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+    #container {
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    #container img {
+        height: 500px;
+    }
+    
+    #d1 {
+        width: 100%;
+        background: red;
+        position: relative;
+        top: -200px;
+        height: 600px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="img/banner.png" alt="" id="img1">
+    </div>
+    <div id="d1">
+        touch 事件触发区域
+    </div>
+    <script>
+    //将jQuery对象转化为dom 对象
+    var touchtarget = $("#d1")[0];
+    var imgs = $("#img1");
+    var startY;
+    var endY;
+    var distance;
+    touchtarget.addEventListener('touchstart', function(event) {//touchstart当手指触摸屏幕时触发；即使已经有一个手指放在了屏幕上也会触发
+        startY = event.touches[0].pageY
+
+    })
+
+    touchtarget.addEventListener('touchmove', function(event) {//touchmove 当手指在屏幕上滑动时连续的触发。在这个事件发生期间，调用preventDefault()可阻止滚动
+        event.preventDefault();
+        moveY = event.touches[0].pageY
+        var moveY;
+        y = moveY - startY;
+
+        $(this).css("top", y / 100)
+
+        h = y * 5 + 400
+        imgs.height(h);
+
+    })
+    touchtarget.addEventListener('touchend', function(event) {//touchend 当手指从屏幕上移开时触发
+        endY = event.changedTouches[0].pageY
+        $(this).css("top", -200)
+        imgs.height(400)
+    })
+    </script>
+</body>
+
+</html>
