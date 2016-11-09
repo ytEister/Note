@@ -1,3 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
 ## AngularJS Directive 隔离 Scope数据交互
 #### 为什么使用隔离scope
         一个可重复的directive,不能依赖父scope,这时候就需要使用隔离scope代替。
@@ -12,9 +15,9 @@
 	    }
 	});
 #### html代码：
-		<div ng-controller="myController">
-			<div share-directive=""></div>
-		</div>
+	<div ng-controller="myController">
+		<div share-directive=""></div>
+	</div>
 #### 输出结果：
 	Say:hello world
 ### 隔离scope，使用隔离scope的时候，无法从父scope中共享属性；
@@ -26,6 +29,7 @@
 	3.= 通过directive的attr属性值在局部scope的属性和父scope属性名之间建立双向绑定
 @ 局部 scope 属性
 #### js代码
+	'''js
 	 app.controller("myController", function ($scope) {
 	        $scope.name = "hello world";
 	    }).directive("isolatedDirective", function () {
@@ -36,7 +40,9 @@
 			template: 'Say：{{name}} <br>改变隔离scope的name：<input type="buttom" value="" ng-model="name" class="ng-pristine ng-valid">'
 		}
 	})
+	'''
 #### html 代码
+
 	<div ng-controller="myController">
 	   <div class="result">
 	       <div>父scope：
